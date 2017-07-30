@@ -19,10 +19,13 @@ class Str
      * Set the string.
      *
      * @param $string
+     * @return $this
      */
     public function set($string)
     {
         $this->string = $string;
+
+        return $this;
     }
 
     /**
@@ -30,7 +33,7 @@ class Str
      *
      * @param $name
      * @param $arguments
-     * @return Str
+     * @return mixed
      */
     public function __call($name, $arguments)
     {
@@ -52,9 +55,7 @@ class Str
     {
         switch (gettype($result)) {
             case 'string':
-                $this->set($result);
-
-                return $this;
+                return $this->set($result);
             default:
                 return $result;
         }
