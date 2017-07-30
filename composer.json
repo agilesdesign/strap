@@ -1,0 +1,27 @@
+{
+    "name": "agilesdesign/strap",
+    "description": "Fluent library for working with strings in Laravel",
+    "type": "library",
+    "require": {
+        "php": "7.*"
+    },
+    "license": "MIT",
+    "autoload": {
+        "files": ["src/functions.php"],
+        "psr-4": {
+            "Strap\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Justin Seliga",
+            "email": "jseliga@agilesdesign.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "orchestra/testbench": "~3.0",
+        "phpunit/phpunit": "^6.2",
+        "laravel/laravel": "^5.4"
+    }
+}
