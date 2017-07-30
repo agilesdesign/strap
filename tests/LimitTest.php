@@ -1,7 +1,7 @@
 <?php
 
-use Orchestra\Testbench\TestCase;
 use Strap\Str;
+use Orchestra\Testbench\TestCase;
 
 class LimitTest extends TestCase
 {
