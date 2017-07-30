@@ -1,6 +1,11 @@
 # strap
 Fluent library for working with strings in Laravel
 
+Branch         |         |         |
+------- | ------- | ------- |
+master  | [![build status](https://gitlab.com/agilesdesign/strap/badges/master/build.svg)](https://gitlab.com/agilesdesign/strap/commits/master)   | [![coverage report](https://gitlab.com/agilesdesign/strap/badges/master/coverage.svg)](https://gitlab.com/agilesdesign/strap/commits/master)
+dev     | [![build status](https://gitlab.com/agilesdesign/strap/badges/dev/build.svg)](https://gitlab.com/agilesdesign/strap/commits/dev)         | [![coverage report](https://gitlab.com/agilesdesign/strap/badges/dev/coverage.svg)](https://gitlab.com/agilesdesign/strap/commits/dev)
+
 ## Description
 `Illuminate\Support\Str` wrapper for fluently working with strings as objects in Laravel. 
 
