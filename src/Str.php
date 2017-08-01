@@ -2,13 +2,11 @@
 
 namespace Strap;
 
-use Illuminate\Support\Str as Support;
+use Illuminate\Support\Str as IlluminateStr;
 
 class Str
 {
     protected $string;
-
-    protected $argumentLocations;
 
     public function __construct($string = '')
     {
@@ -19,26 +17,26 @@ class Str
      * Set the string.
      *
      * @param $string
+     * @return $this
      */
-    public function set($string)
+    public function set(string $string)
     {
         $this->string = $string;
+
+        return $this;
     }
 
     /**
-     * Forward the called method to Support.
+     * Process the request.
      *
      * @param $name
      * @param $arguments
-     * @return Str
+     * @return mixed
      */
     public function __call($name, $arguments)
     {
         return $this->determineReturn(
-            forward_static_call_array(
-                [Support::class, $name],
-                $this->orderArguments($name, $arguments)
-            )
+            $this->passToIlluminateStr($name, $arguments)
         );
     }
 
@@ -52,16 +50,29 @@ class Str
     {
         switch (gettype($result)) {
             case 'string':
-                $this->set($result);
-
-                return $this;
+                return $this->set($result);
             default:
                 return $result;
         }
     }
 
     /**
-     * Order the arguments to be sent to Support.
+     * Pass request to IlluminateStr.
+     *
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    protected function passToIlluminateStr($name, $arguments)
+    {
+        return forward_static_call_array(
+            [IlluminateStr::class, $name],
+            $this->orderArguments($name, $arguments)
+        );
+    }
+
+    /**
+     * Order the arguments to match requested IlluminateStr method signature.
      *
      * @param $name
      * @param $arguments
@@ -97,7 +108,7 @@ class Str
     }
 
     /**
-     * The location where the string is passed into Support.
+     * The location where the string is passed into IlluminateStr.
      *
      * @return \Illuminate\Support\Collection
      */
@@ -119,6 +130,11 @@ class Str
         return $this->get();
     }
 
+    /**
+     * Retrieve the string.
+     *
+     * @return mixed
+     */
     public function get()
     {
         return $this->string;
